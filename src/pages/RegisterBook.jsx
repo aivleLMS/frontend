@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { updateBook } from "../api/bookService";
 
 function RegisterBook() {
@@ -10,7 +10,7 @@ function RegisterBook() {
   const [category, setCategory] = useState("");
   const [coverUrl, setCoverUrl] = useState("");
 
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // 도서 등록 버튼 눌렀을 때 실행되는 함수
   const handleSubmit = async (e) => {
@@ -45,6 +45,10 @@ function RegisterBook() {
   return (
     <div>
       <h2>📘 새 도서 등록</h2>
+      <button type="submit" onClick={() => navigate("/book")}>
+        back
+      </button>
+
       <form onSubmit={handleSubmit}>
         <div>
           <label>제목:</label>
@@ -91,7 +95,9 @@ function RegisterBook() {
           <button type="button" onClick={handleGenerateCover}>
             AI 표지 생성
           </button>
-          <button type="submit">도서 등록</button>
+          <button type="submit" onClick={() => navigate("/book")}>
+            도서 등록
+          </button>
         </div>
       </form>
     </div>
