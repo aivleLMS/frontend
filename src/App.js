@@ -10,9 +10,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<BookList />} />
+        <Route path="/book" element={<BookList />} />
         <Route path="/book/:id" element={<BookDetail />} />
-        <Route path="/new" element={<RegisterBook />} />
+        <Route path="/register" element={<RegisterBook />} />
         <Route path="/edit" element={<EditBook />} />
       </Routes>
     </Router>
