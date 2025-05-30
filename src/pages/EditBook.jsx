@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateBook } from "../api/bookService";
+import Button from "@mui/material/Button";
+import DownloadIcon from "@mui/icons-material/Download";
 
 function EditBook() {
   // 상태 변수들: 입력값을 관리
@@ -92,6 +94,14 @@ function EditBook() {
           <button type="button" onClick={handleGenerateCover}>
             AI 표지 재생성
           </button>
+          <Button
+            variant="outlined"
+            size="small"
+            color="neutral"
+            startIcon={<DownloadIcon fontSize="inherit" />}
+          >
+            Download
+          </Button>
           <button type="submit" onClick={() => navigate("/book")}>
             수정
           </button>

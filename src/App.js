@@ -6,10 +6,13 @@ import BookDetail from "./pages/BookDetail";
 import RegisterBook from "./pages/RegisterBook";
 import EditBook from "./pages/EditBook";
 import Login from "./pages/Login";
+import AppBar from "./components/AppBar";
 
 function App() {
   return (
     <Router>
+      <AppBar />
+
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/book" element={<BookList />} />
