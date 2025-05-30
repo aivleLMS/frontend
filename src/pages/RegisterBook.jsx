@@ -4,7 +4,7 @@ import { updateBook } from "../api/bookService";
 
 function RegisterBook() {
   // 상태 변수들: 입력값을 관리
-  const [id, setId] = useState("");
+  const id = "";
   const [title, setTitle] = useState("");
   const [story, setStory] = useState("");
   const [category, setCategory] = useState("");
@@ -90,7 +90,6 @@ function RegisterBook() {
           <img src={coverUrl} alt="도서 표지" />
         </div>
 
-        {/* 버튼 영역 */}
         <div>
           <button type="button" onClick={handleGenerateCover}>
             AI 표지 생성
