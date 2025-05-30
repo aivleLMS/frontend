@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import {Box,Paper,Button,Typography} from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
 const sampleBooks = [
   { id: 1, title: '리액트를 다루는 기술', category: '프로그래밍', createdAt: '2025-05-30' },
   { id: 2, title: '자바의 정석', category: '프로그래밍', createdAt: '2025-05-28' },
@@ -13,8 +14,22 @@ export const BookList = () => {
 
   return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <h1>글 목록</h1>
-      <button style={{ marginBottom: '20px' }}>등록</button>
+      <Typography variant="h5" fontWeight="bold" mb={3}>
+      글 목록
+    </Typography>
+      <Box
+        sx={{
+          background: "#f0f4f8",
+          backgroundImage: `radial-gradient(#d1e3f8 1px, transparent 1px)`,
+          backgroundSize: "20px 20px",
+          minHeight: "100vh",
+          py: 6,
+          px: 10,
+        }}
+      >
+        <Paper elevation={3} sx={{ maxWidth: 800, mx: "auto", p: 4, borderRadius: 5 }}>
+      <Button variant="outlined"
+      startIcon={<AddIcon/>}>등록</Button>
       <ul style={{ listStyle: 'none', padding: 0 }}>
         {books.map(book => (
           <li
@@ -60,6 +75,8 @@ export const BookList = () => {
           </li>
         ))}
       </ul>
+    </Paper>
+    </Box>
     </div>
   );
 };
