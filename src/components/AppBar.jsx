@@ -82,7 +82,7 @@ export default function PrimarySearchAppBar() {
     setMobileMoreAnchorEl(null);
   };
 
-  // renderMenu
+  // 창 전체모드
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -105,7 +105,7 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
-  // renderMobileMenu
+  // 창 축소모드
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -154,7 +154,7 @@ export default function PrimarySearchAppBar() {
             component="div"
             sx={{
               display: { xs: "none", sm: "block" },
-              cursor: "pointer", // 이거 추가!
+              cursor: "pointer",
             }}
             onClick={() => handleMenuClick("/book")}
           >
@@ -180,6 +180,8 @@ export default function PrimarySearchAppBar() {
               onClick={() => handleMenuClick("/book")}
             >
               <Badge badgeContent={17} color="info">
+                {" "}
+                {/* 수정필요) 17 -> 도서 목록 개수로 */}
                 <MenuBookIcon />
               </Badge>
             </IconButton>

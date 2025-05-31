@@ -112,7 +112,7 @@ function RegisterBook() {
                   "& .MuiOutlinedInput-root": {
                     borderRadius: 2,
                     "& fieldset": {
-                      borderWidth: 2,
+                      borderWidth: 1.5,
                     },
                   },
                 }}
@@ -135,7 +135,7 @@ function RegisterBook() {
                   "& .MuiOutlinedInput-root": {
                     borderRadius: 2,
                     "& fieldset": {
-                      borderWidth: 2,
+                      borderWidth: 1.5,
                     },
                   },
                 }}
@@ -156,7 +156,7 @@ function RegisterBook() {
 
           {/* 내용 */}
           <Box sx={{ mb: 3 }}>
-            <Typography variant="h6" fontWeight="bold" color="Black" mb={1}>
+            <Typography variant="subtitle1" fontWeight="bold" mb={1}>
               내용
             </Typography>
             <TextField
@@ -170,9 +170,9 @@ function RegisterBook() {
               variant="outlined"
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  padding: "10px",
+                  borderRadius: 2,
                   "& fieldset": {
-                    borderWidth: "2px",
+                    borderWidth: 1.5,
                   },
                 },
               }}
