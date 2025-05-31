@@ -1,6 +1,16 @@
 import axiosInstance from "./axiosInstance";
 
-//도서 목록 조회
+// 신규 도서 등록
+export const createBook = async (bookData) => {
+  try {
+    const response = await axiosInstance.post(`/books`, bookData);
+    return response.data.data;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+//도서 목록 확인
 export const fetchBooks = async (title = "") => {
   try {
     const response = await axiosInstance.get("/books", {
@@ -12,7 +22,7 @@ export const fetchBooks = async (title = "") => {
   }
 };
 
-//도서 상세 조회
+//도서 상세 정보 조회
 export const fetchBookById = async (id) => {
   try {
     const response = await axiosInstance.get(`/books/${id}`);
@@ -22,17 +32,7 @@ export const fetchBookById = async (id) => {
   }
 };
 
-//도서 등록
-export const createBook = async (bookData) => {
-  try {
-    const response = await axiosInstance.post(`/books`, bookData);
-    return response.data.data;
-  } catch (error) {
-    handleError(error);
-  }
-};
-
-//도서 수정
+// 도서 수정
 export const updateBook = async (id, bookData) => {
   try {
     const response = await axiosInstance.put(`/books/${id}`, bookData);
@@ -42,7 +42,7 @@ export const updateBook = async (id, bookData) => {
   }
 };
 
-//도서 삭제
+// 도서 삭제
 export const deleteBook = async (id) => {
   try {
     const reponse = await axiosInstance.delete(`/books/${id}`);
