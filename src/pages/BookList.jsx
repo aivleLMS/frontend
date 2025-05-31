@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import {Box,Paper,Button,Typography} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 const sampleBooks = [
@@ -10,8 +10,8 @@ const sampleBooks = [
 ];
 
 export const BookList = () => {
-  const [books, setBooks] = useState(sampleBooks);
-
+  const [books] = useState(sampleBooks);
+  const navigate = useNavigate();
   return (
     <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
       <Typography variant="h5" fontWeight="bold" mb={3}>
@@ -28,7 +28,7 @@ export const BookList = () => {
         }}
       >
         <Paper elevation={3} sx={{ maxWidth: 800, mx: "auto", p: 4, borderRadius: 5 }}>
-      <Button variant="outlined"
+      <Button variant="outlined" onClick={()=>navigate("/register")}
       startIcon={<AddIcon/>}>등록</Button>
       <ul style={{ listStyle: 'none', padding: 0 }}>
         {books.map(book => (

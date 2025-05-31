@@ -32,7 +32,7 @@ const BookDetail = () => {
       <button type="submit" onClick={() => navigate("/edit")}>
         수정
       </button>
-      <button type="submit" onClick={() => navigate("/")}>
+      <button type="submit" onClick={() => navigate("/book")}>
         삭제
       </button>
     </div>
