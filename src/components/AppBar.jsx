@@ -12,8 +12,6 @@ import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import MenuBookIcon from "@mui/icons-material/MenuBook"; // 도서 목록에 적합!
 import LibraryAddIcon from "@mui/icons-material/LibraryAdd"; // 도서 추가 느낌!
@@ -63,9 +61,7 @@ export default function PrimarySearchAppBar() {
   // Menu
   const [anchorEl, setAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
-  const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
