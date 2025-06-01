@@ -1,35 +1,36 @@
 import axiosInstance from "./axiosInstance";
 
-// 신규 도서 등록
-export const createBook = async (bookData) => {
-  try {
-    const response = await axiosInstance.post(`/books`, bookData);
-    return response.data.data;
-  } catch (error) {
-    handleError(error);
-  }
+//도서 목록 조회
+export const fetchBooks = async (title = '') => {
+    try {
+        const response = await axiosInstance.get(`/books`, {
+            params: {title}
+        });
+        return response.data;
+    } catch (error) {
+        handleError(error);
+    }
+
 };
 
-//도서 목록 확인
-export const fetchBooks = async (title = "") => {
-  try {
-    const response = await axiosInstance.get("/books", {
-      params: { title },
-    });
-    return response.data.data;
-  } catch (error) {
-    handleError(error);
-  }
-};
-
-//도서 상세 정보 조회
+//도서 상세 조회
 export const fetchBookById = async (id) => {
-  try {
-    const response = await axiosInstance.get(`/books/${id}`);
-    return response.data.data;
-  } catch (error) {
-    handleError(error);
-  }
+    try {
+        const response = await axiosInstance.get(`/books/${id}`);
+        return response.data.data;
+    } catch (error) {
+        handleError(error);
+    }
+};
+
+//도서 등록
+export const createBook = async (bookData) => {
+    try {
+        const response = await axiosInstance.post(`/books`, bookData);
+        return response.data.data;
+    } catch (error) {
+        handleError(error);
+    }
 };
 
 // 도서 수정
