@@ -13,8 +13,8 @@ export async function generateBookCoverImage(apiKey, prompt, model = 'dall-e-3',
   const response = await fetch('https://api.openai.com/v1/images/generations', {
     method: 'POST',
     headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify(requestBody),
 
@@ -28,6 +28,6 @@ export async function generateBookCoverImage(apiKey, prompt, model = 'dall-e-3',
   }
   const data = await response.json();
   console.log('OpenAI API 응답 데이터: ', data);
-  
+
   return data.data[0].url;
 }
