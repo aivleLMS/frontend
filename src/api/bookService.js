@@ -33,38 +33,37 @@ export const createBook = async (bookData) => {
     }
 };
 
-//도서 수정
+// 도서 수정
 export const updateBook = async (id, bookData) => {
-    try {
-        const response = await axiosInstance.put(`/books/${id}`, bookData);
-        return response.data.data;
-    } catch (error) {
-        handleError(error);
-    }
+  try {
+    const response = await axiosInstance.put(`/books/${id}`, bookData);
+    return response.data.data;
+  } catch (error) {
+    handleError(error);
+  }
 };
 
-//도서 삭제
+// 도서 삭제
 export const deleteBook = async (id) => {
-    try {
-        const reponse = await axiosInstance.delete(`/books/${id}`);
-        return reponse.data.message;
-    } catch (error) {
-        handleError(error);
-    }
+  try {
+    const reponse = await axiosInstance.delete(`/books/${id}`);
+    return reponse.data.message;
+  } catch (error) {
+    handleError(error);
+  }
 };
 
 //공통 에러
 function handleError(error) {
-    if (error.response) {
-        const {status, data} = error.response;
-        if (status === 401 || status === 400) {
-            alert(data.message);
-        } else if (status === 500) {
-            alert("서버 오류");
-        } else {
-            alert("네트워크 오류");
-        }
-        throw error;
+  if (error.response) {
+    const { status, data } = error.response;
+    if (status === 401 || status === 400) {
+      alert(data.message);
+    } else if (status === 500) {
+      alert("서버 오류");
+    } else {
+      alert("네트워크 오류");
     }
+    throw error;
+  }
 }
-
