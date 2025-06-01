@@ -17,7 +17,7 @@ export const fetchBooks = async (title = '') => {
 export const fetchBookById = async (id) => {
     try {
         const response = await axiosInstance.get(`/books/${id}`);
-        return response.data.data;
+        return response.data;
     } catch (error) {
         handleError(error);
     }
