@@ -46,7 +46,7 @@ const Login = () => {
   };
 
   return (
-    <Boxstyle
+    <Box
       sx={{
         display: "flex",
         justifyContent: "center",
