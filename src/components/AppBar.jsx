@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
+
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -9,12 +11,11 @@ import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import MenuBookIcon from "@mui/icons-material/MenuBook"; // 도서 목록에 적합!
+import LibraryAddIcon from "@mui/icons-material/LibraryAdd"; // 도서 추가 느낌!
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts"; // 유저 정보에 직관적!
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -57,29 +58,31 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  // Menu
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
   const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
 
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
+  const navigate = useNavigate();
 
+  const handleMenuClick = (path) => {
+    navigate(path);
+  };
+
+  // MobileMenu
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
 
+  // 창 전체모드
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -97,11 +100,12 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={() => handleMenuClick("/book")}>dddgdsg</MenuItem>
+      <MenuItem onClick={() => handleMenuClick("/register")}>dpddd </MenuItem>
     </Menu>
   );
 
+  // 창 축소모드
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -119,103 +123,87 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
+      <MenuItem onClick={() => handleMenuClick("/book")}>
+        <IconButton size="small" color="inherit">
+          <MenuBookIcon />
         </IconButton>
-        <p>Messages</p>
+        <p>도서 목록 </p>
       </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
+      <MenuItem onClick={() => handleMenuClick("/register")}>
+        <IconButton size="small" color="inherit">
+          <LibraryAddIcon />
         </IconButton>
-        <p>Notifications</p>
+        <p>도서 추가</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
+      <MenuItem onClick={() => handleMenuClick("/userinfo")}>
+        <IconButton size="small" color="inherit">
+          <ManageAccountsIcon />
         </IconButton>
-        <p>Profile</p>
+        <p>사용자 정보</p>
       </MenuItem>
     </Menu>
   );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor: "#9cc3ba" }}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
+            sx={{
+              display: { xs: "none", sm: "block" },
+              cursor: "pointer",
+            }}
+            onClick={() => handleMenuClick("/book")}
           >
-            MUI
+            AIVLE LIBRARY
           </Typography>
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="도서를 검색하세요.."
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+
           <Box sx={{ flexGrow: 1 }} />
+
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"
-              aria-label="show 4 new mails"
               color="inherit"
+              onClick={() => handleMenuClick("/book")}
             >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
+              <Badge badgeContent={17} color="info">
+                {" "}
+                {/* 수정필요) 17 -> 도서 목록 개수로 */}
+                <MenuBookIcon />
               </Badge>
             </IconButton>
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
               color="inherit"
+              onClick={() => handleMenuClick("/register")}
             >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
+              <LibraryAddIcon />
             </IconButton>
             <IconButton
               size="large"
               edge="end"
-              aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              onClick={() => handleMenuClick("/userinfo")}
               color="inherit"
             >
-              <AccountCircle />
+              <ManageAccountsIcon />
             </IconButton>
           </Box>
+
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"

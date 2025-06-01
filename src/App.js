@@ -7,6 +7,7 @@ import RegisterBook from "./pages/RegisterBook";
 import EditBook from "./pages/EditBook";
 import Login from "./pages/Login";
 import AppBar from "./components/AppBar";
+import UserInfo from "./pages/UserInfo";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/book/:id" element={<BookDetail />} />
         <Route path="/register" element={<RegisterBook />} />
         <Route path="/edit" element={<EditBook />} />
+        <Route path="/userinfo" element={<UserInfo />} />
       </Routes>
     </Router>
   );
