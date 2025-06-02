@@ -83,12 +83,8 @@ export const deleteBook = (id) => axiosInstance.delete(`/books/${id}`);
 
 Material UI(MUI)를 기반으로 일관된 디자인 요소(버튼, 카드, 입력창 등)를 사용하며, 사용자 경험을 고려해 반응형 스타일이 적용되어 있습니다.
 
-<aside>
-💡
 
 **Page**
-
-</aside>
 
 ### 1. `BookList.jsx`
 
