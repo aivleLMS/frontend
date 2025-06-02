@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {Box, Paper, Button, Typography} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import {fetchBooks} from "../api/bookService";
-
+import {generateBookCoverImage} from "../api/openaiService";
 const sampleBooks = [
     {
         id: 1,
@@ -21,7 +21,26 @@ const sampleBooks = [
     {id: 4, title: "해리포터", category: "판타지", createdAt: "2025-05-22"},
 ];
 
+const categoryMap = {
+    NOVEL: "소설",
+    POETRY_ESSAY: "시/에세이",
+    HUMANITIES: "인문",
+    FAMILY_PARENTING: "가정/육아",
+    HOBBY: "취미",
+    SELF_IMPROVEMENT: "자기계발",
+    ECONOMY_BUSINESS: "경제/경영",
+    SOCIETY: "정치/사회",
+    HISTORY_CULTURE: "역사/문화",
+    RELIGION: "종교",
+    ART_POP_CULTURE: "예술/대중문화",
+    TECHNOLOGY_ENGINEERING: "기술/공학",
+    SCIENCE: "과학",
+    TRAVEL: "여행",
+};
+
+
 export const BookList = () => {
+    
     const [books, setBooks] = useState(sampleBooks);
     const navigate = useNavigate();
 
@@ -71,34 +90,53 @@ export const BookList = () => {
                                 justifyContent: "space-between",
                             }}
                         >
-                            <div style={{display: "flex", alignItems: "center"}}>
-                                <div
-                                    style={{
-                                        width: "60px",
-                                        height: "80px",
-                                        backgroundColor: "#eee",
-                                        marginRight: "15px",
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        fontSize: "12px",
-                                        color: "#888",
+                            <div style={{ display: "flex", alignItems: "center", flex: 1 }}>
+                                {/* 이미지 */}
+                                <Box
+                                    component="img"
+                                    src={book.bookCoverUrl || "/default-cover.jpg"}
+                                    alt={book.title}
+                                    loading="lazy"
+                                    sx={{
+                                    width: 200,
+                                    height: 280,
+                                    objectFit: "cover",
+                                    borderRadius: 2,
+                                    boxShadow: 2,
+                                    marginRight: 3, // ← 이미지와 텍스트 사이 간격 증가
                                     }}
-                                >
-                                    이미지
-                                </div>
+                                />
+
+                                {/* 책 정보 */}
                                 <div>
-                                    <h3 style={{margin: "0 0 5px 0"}}>{book.title}</h3>
-                                    <p style={{margin: 0}}>카테고리: {book.category}</p>
-                                    <p style={{margin: 0, fontSize: "0.9em", color: "#555"}}>
-                                        등록일: {book.createdAt}
+                                    <h3 style={{ margin: "0 0 5px 0" }}>{book.title}</h3>
+                                    <p style={{ margin: 0 }}>
+                                    카테고리: {categoryMap[book.category] || book.category}
+                                    </p>
+                                    <p style={{ margin: 0, fontSize: "0.9em", color: "#555" }}>
+                                    등록일: {book.createdAt}
                                     </p>
                                 </div>
-                            </div>
+                                </div>
 
-                            <Link to={`/book/${book.id}`}>
-                                <button>보기</button>
-                            </Link>
+                                {/* 보기 버튼 (MUI 사용) */}
+                                <Button
+                                variant="contained"
+                                color="primary"
+                                component={Link}
+                                to={`/book/${book.id}`}
+                                sx={{
+                                    borderRadius: 2,
+                                    textTransform: "none",
+                                    transition: "all 0.3s ease",
+                                    "&:hover": {
+                                    backgroundColor: "#1976d2",
+                                    },
+                                }}
+                                >
+                                보기
+                                </Button>
+
                         </li>
                     ))}
                 </ul>
