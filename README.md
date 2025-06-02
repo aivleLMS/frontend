@@ -13,7 +13,7 @@ KT AIVLE SCHOOL 4차 미니 프로젝트
 > 
 
 
----
+
 ## 🛠️ 기술 스택
 
 | 구분 | 사용 기술 / 도구 |
@@ -29,7 +29,7 @@ KT AIVLE SCHOOL 4차 미니 프로젝트
 | **기타** | 로컬스토리지(LocalStorage)를 통한 사용자 정보 저장 |
 
 
----
+
 ## 📡 API 연동 및 기능 구현
 
 ### ✅ OpenAI API를 활용한 도서 표지 생성
@@ -75,7 +75,7 @@ export const deleteBook = (id) => axiosInstance.delete(`/books/${id}`);
     - 로그인 (`/`)
     - 사용자 정보 확인 (`/userinfo`)
 
----
+
 
 ### 🖥️ 화면 구성 및 주요 UI 설명
 
