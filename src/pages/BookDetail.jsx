@@ -1,31 +1,14 @@
-import {useState, useEffect} from "react";
-import {useParams} from "react-router-dom";
-import {useNavigate} from "react-router-dom";
-import {Button, Paper, TextField, Typography, Box} from "@mui/material";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Button, Paper, TextField, Typography, Box } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import {fetchBookById, deleteBook} from "../api/bookService";
-
-const sampleBooks = [
-  {
-    id: 1,
-    title: "리액트를 다루는 기술",
-    category: "프로그래밍",
-    createdAt: "2025-05-30",
-  },
-  {
-    id: 2,
-    title: "자바의 정석",
-    category: "프로그래밍",
-    createdAt: "2025-05-28",
-  },
-  {id: 3, title: "불편한 편의점", category: "소설", createdAt: "2025-05-25"},
-  {id: 4, title: "해리포터", category: "판타지", createdAt: "2025-05-22"},
-];
+import { fetchBookById, deleteBook } from "../api/bookService";
 
 const BookDetail = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const [book, setBook] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -72,13 +55,13 @@ const BookDetail = () => {
     >
       <Paper
         elevation={3}
-        sx={{maxWidth: 800, mx: "auto", p: 4, borderRadius: 4}}
+        sx={{ maxWidth: 800, mx: "auto", p: 4, borderRadius: 4 }}
       >
         <Button
           variant="outlined"
-          startIcon={<ArrowBackIosNewIcon/>}
+          startIcon={<ArrowBackIosNewIcon />}
           onClick={() => navigate(-1)} // 이전 페이지로 이동
-          sx={{mb: 2}}
+          sx={{ mb: 2 }}
         >
           뒤로가기
         </Button>
@@ -109,14 +92,14 @@ const BookDetail = () => {
           />
           {/* 텍스트 정보 */}
           <Box
-            sx={{flex: 1, display: "flex", flexDirection: "column", gap: 2}}
+            sx={{ flex: 1, display: "flex", flexDirection: "column", gap: 2 }}
           >
             <TextField
               label="제목"
               value={book.title}
               variant="outlined"
               fullWidth
-              InputProps={{readOnly: true}}
+              InputProps={{ readOnly: true }}
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: 2,
@@ -131,7 +114,7 @@ const BookDetail = () => {
               value={book.category}
               variant="outlined"
               fullWidth
-              InputProps={{readOnly: true}}
+              InputProps={{ readOnly: true }}
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: 2,
@@ -146,7 +129,7 @@ const BookDetail = () => {
               value={book.createdAt}
               variant="outlined"
               fullWidth
-              InputProps={{readOnly: true}}
+              InputProps={{ readOnly: true }}
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: 2,
@@ -163,7 +146,7 @@ const BookDetail = () => {
               rows={4}
               variant="outlined"
               fullWidth
-              InputProps={{readOnly: true}}
+              InputProps={{ readOnly: true }}
               sx={{
                 "& .MuiOutlinedInput-root": {
                   borderRadius: 2,
@@ -175,11 +158,11 @@ const BookDetail = () => {
             />
           </Box>
         </Box>
-        <Box sx={{display: "flex", gap: 2, justifyContent: "center", mt: 4}}>
+        <Box sx={{ display: "flex", gap: 2, justifyContent: "center", mt: 4 }}>
           <Button
             variant="contained"
             color="success"
-            startIcon={<EditIcon/>}
+            startIcon={<EditIcon />}
             type="submit"
             onClick={() => navigate(`/edit/${book.id}`)}
           >
@@ -188,7 +171,7 @@ const BookDetail = () => {
           <Button
             variant="contained"
             color="error"
-            startIcon={<DeleteIcon/>}
+            startIcon={<DeleteIcon />}
             onClick={handleDelete}
           >
             삭제
