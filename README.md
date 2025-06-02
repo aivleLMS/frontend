@@ -12,6 +12,8 @@ KT AIVLE SCHOOL 4차 미니 프로젝트
 > 본 레포지토리는 프론트엔드(React) UI 및 OpenAI 연동 로직을 포함합니다.
 > 
 
+
+---
 ## 🛠️ 기술 스택
 
 | 구분 | 사용 기술 / 도구 |
@@ -26,15 +28,8 @@ KT AIVLE SCHOOL 4차 미니 프로젝트
 | **라우팅** | react-router-dom을 통한 SPA 라우팅 처리 |
 | **기타** | 로컬스토리지(LocalStorage)를 통한 사용자 정보 저장 |
 
-<aside>
-💡
-
-**API**
-
-</aside>
 
 ---
-
 ## 📡 API 연동 및 기능 구현
 
 ### ✅ OpenAI API를 활용한 도서 표지 생성
