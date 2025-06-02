@@ -240,7 +240,7 @@ function RegisterBook() {
               variant="contained"
               color="success"
               startIcon={<DeleteIcon/>}
-              // onClick={() => navigate("/book")}
+              onClick={() => navigate("/book")}
               type="submit"
             >
               도서 등록
