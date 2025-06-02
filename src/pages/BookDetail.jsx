@@ -7,6 +7,23 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { fetchBookById, deleteBook } from "../api/bookService";
 
+const categoryMap = {
+  NOVEL: "소설",
+  POETRY_ESSAY: "시/에세이",
+  HUMANITIES: "인문",
+  FAMILY_PARENTING: "가정/육아",
+  HOBBY: "취미",
+  SELF_IMPROVEMENT: "자기계발",
+  ECONOMY_BUSINESS: "경제/경영",
+  SOCIETY: "정치/사회",
+  HISTORY_CULTURE: "역사/문화",
+  RELIGION: "종교",
+  ART_POP_CULTURE: "예술/대중문화",
+  TECHNOLOGY_ENGINEERING: "기술/공학",
+  SCIENCE: "과학",
+  TRAVEL: "여행",
+};
+
 const BookDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -111,7 +128,7 @@ const BookDetail = () => {
             />
             <TextField
               label="카테고리"
-              value={book.category}
+              value={categoryMap[book.category]}
               variant="outlined"
               fullWidth
               InputProps={{ readOnly: true }}
@@ -126,7 +143,7 @@ const BookDetail = () => {
             />
             <TextField
               label="작성일"
-              value={book.createdAt}
+              value={book.createDate ? new Date(book.createDate).toLocaleString("ko-KR") : "작성일 없음"}
               variant="outlined"
               fullWidth
               InputProps={{ readOnly: true }}
