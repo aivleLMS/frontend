@@ -27,7 +27,7 @@ const categoryMap = {
 const BookDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [book, setBook] = useState(null);
+  const [book, setBook] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
