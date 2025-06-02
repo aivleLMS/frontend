@@ -1,5 +1,3 @@
-# 도서관리시스템
-
 # 📘 AIVLE LMS Frontend - AI 기반 도서 표지 생성 웹
 
 React 기반 도서 등록/조회 UI + OpenAI DALL·E API 연동
