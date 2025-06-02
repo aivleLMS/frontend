@@ -39,7 +39,7 @@ const categoryMap = {
 };
 
 export const BookList = () => {
-  const [books, setBooks] = useState(null);
+  const [books, setBooks] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -112,7 +112,7 @@ export const BookList = () => {
                     카테고리: {categoryMap[book.category] || book.category}
                   </p>
                   <p style={{ margin: 0, fontSize: "0.9em", color: "#555" }}>
-                    등록일: {book.createdAt}
+                    등록일: {book.createDate ? new Date(book.createDate).toLocaleString("ko-KR") : "등록일 없음"}
                   </p>
                 </div>
               </div>
